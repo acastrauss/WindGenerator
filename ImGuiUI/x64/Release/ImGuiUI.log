@@ -1,0 +1,4 @@
+﻿  WindEnergyWindow.cpp
+D:\opengl_antongerd\my_examples\examples\ConsoleApplication1\ImGuiUI\src\UIComponents\WindEnergyWindow.cpp(22,25): warning C4244: 'argument': conversion from 'const unsigned int' to 'float', possible loss of data
+D:\opengl_antongerd\my_examples\examples\ConsoleApplication1\ImGuiUI\src\UIComponents\WindEnergyWindow.cpp(22,16): warning C4244: 'argument': conversion from 'const unsigned int' to 'float', possible loss of data
+  ImGuiUI.vcxproj -> D:\opengl_antongerd\my_examples\examples\ConsoleApplication1\x64\Release\ImGuiUI.lib

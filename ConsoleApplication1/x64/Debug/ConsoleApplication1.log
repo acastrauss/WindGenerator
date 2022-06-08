@@ -1,0 +1,7 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\Nikola\Desktop\WindGenerator-master\ConsoleApplication1\Window\MainWindow.h(62,42): warning C4244: 'return': conversion from 'const GLint' to 'GLfloat', possible loss of data
+C:\Users\Nikola\Desktop\WindGenerator-master\ConsoleApplication1\Window\MainWindow.h(63,43): warning C4244: 'return': conversion from 'const GLint' to 'GLfloat', possible loss of data
+C:\Users\Nikola\Desktop\WindGenerator-master\ConsoleApplication1\ConsoleApplication1.cpp(230,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Nikola\Desktop\WindGenerator-master\ConsoleApplication1\ConsoleApplication1.cpp(234,26): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Nikola\Desktop\WindGenerator-master\ConsoleApplication1\ConsoleApplication1.cpp(254,73): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  ConsoleApplication1.vcxproj -> C:\Users\Nikola\Desktop\WindGenerator-master\x64\Debug\ConsoleApplication1.exe
