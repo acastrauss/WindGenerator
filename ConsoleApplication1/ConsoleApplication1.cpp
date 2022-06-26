@@ -184,6 +184,8 @@ int main() {
     Texture metalTex("Textures/textures/metal3.jpg");
     metalTex.LoadTexture();
 
+
+    const unsigned int numberOfGenerators = 4;
     WindGenerator winGenerator(
         spm1, {},
         glm::vec3(0.0f, 0.0f, 0.0f),
@@ -229,6 +231,7 @@ int main() {
     float time = 0;
     float step = 0.05;
     mo->SetShader(wind);
+
     while (!window.getShouldClose())
     {
         now = glfwGetTime();
@@ -386,6 +389,7 @@ int main() {
         );
         metalTex.UseTexture();
         winGenerator.setDelta(delta_time * 100);
+        winGenerator.SetBladePercentageInc(wew.GetBladePercentageIncrease());
         winGenerator.Render(glm::vec3(3.0f,12.0f,4.0f));
         winGenerator.Render(glm::vec3(20.0f,13.0f, 6.0f));
         winGenerator.Render(glm::vec3(28.0f, 13.0f, 28.0f));

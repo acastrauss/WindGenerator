@@ -32,5 +32,7 @@ public:
 
     float getWindSpeed() const;
 
+    float GetBladePercentageIncrease() const;
+
     void Render();
 };

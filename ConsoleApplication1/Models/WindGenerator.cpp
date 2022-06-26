@@ -55,8 +55,12 @@ GLfloat WindGenerator::getRotorLength() const
 
 GLfloat WindGenerator::getPropellerSideArea() const
 {
-
 	return 0.0f;
+}
+
+void WindGenerator::SetBladePercentageInc(float perc)
+{
+	bladePercentageInc = perc;
 }
 
 WindGenerator::~WindGenerator()
@@ -91,9 +95,17 @@ void WindGenerator::CreateMeshes()
 void WindGenerator::Render(glm::vec3 position)
 {
 	m_ModelMatrix = glm::mat4(1.0f);
-	m_ModelMatrix = glm::translate(m_ModelMatrix, position);
-
 	
+	glm::vec3 scaledPosition = position;
+	scaledPosition.y += (bladePercentageInc - 1.0f) * 7.0f;
+
+	m_ModelMatrix = glm::translate(m_ModelMatrix, scaledPosition);
+
+	m_ModelMatrix = glm::scale(
+		m_ModelMatrix,
+		glm::vec3(bladePercentageInc, bladePercentageInc, bladePercentageInc)
+	);
+
 	glUniformMatrix4fv(
 		m_UniformLocation.ModelMatrixLocation,
 		1,
@@ -102,14 +114,23 @@ void WindGenerator::Render(glm::vec3 position)
 	);
 
 	m_Meshes[0].RenderMesh(); // cone base
+	
 	m_Meshes[1].RenderMesh(); // propeller base
 
 	// first propeller
+	m_ModelMatrix = glm::mat4(1.0f);
+
+	m_ModelMatrix = glm::translate(m_ModelMatrix, scaledPosition);
 
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
 		glm::radians(startAngle),
 		glm::vec3(0, 0, 1)
+	);
+
+	m_ModelMatrix = glm::scale(
+		m_ModelMatrix,
+		glm::vec3(bladePercentageInc, bladePercentageInc, bladePercentageInc)
 	);
 
 	glUniformMatrix4fv(
@@ -123,7 +144,8 @@ void WindGenerator::Render(glm::vec3 position)
 
 	// second propeller
 	m_ModelMatrix = glm::mat4(1.0f);
-	m_ModelMatrix = glm::translate(m_ModelMatrix, position);
+
+	m_ModelMatrix = glm::translate(m_ModelMatrix, scaledPosition);
 
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
@@ -131,6 +153,11 @@ void WindGenerator::Render(glm::vec3 position)
 		glm::vec3(0, 0, 1)
 	);
 
+	m_ModelMatrix = glm::scale(
+		m_ModelMatrix,
+		glm::vec3(bladePercentageInc, bladePercentageInc, bladePercentageInc)
+	);
+	
 	glUniformMatrix4fv(
 		m_UniformLocation.ModelMatrixLocation,
 		1,
@@ -142,12 +169,18 @@ void WindGenerator::Render(glm::vec3 position)
 
 	// third propeller
 	m_ModelMatrix = glm::mat4(1.0f);
-	m_ModelMatrix = glm::translate(m_ModelMatrix, position);
 
+	m_ModelMatrix = glm::translate(m_ModelMatrix, scaledPosition);
+	
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
 		glm::radians((startAngle + 240.0f)),
 		glm::vec3(0, 0, 1)
+	);
+
+	m_ModelMatrix = glm::scale(
+		m_ModelMatrix,
+		glm::vec3(bladePercentageInc, bladePercentageInc, bladePercentageInc)
 	);
 
 	glUniformMatrix4fv(

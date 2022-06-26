@@ -13,7 +13,9 @@ float WindSpeedSlider::GetWindSpeed() const
 
 bool WindSpeedSlider::Render()
 {
-    return ImGui::SliderFloat(
+    bool retVal = true;
+
+    retVal &= ImGui::SliderFloat(
         "Wind speed [m/s]",
         &(m_WindSpeedData->WindSpeed),
         m_WindSpeedData->MinSpeed,
@@ -21,4 +23,17 @@ bool WindSpeedSlider::Render()
         "%.2f",
         ImGuiSliderFlags_None
     );
+
+    ImGui::NewLine();
+
+    retVal &= ImGui::SliderFloat(
+        "Blade length[m]:",
+        &(m_WindSpeedData->BladeLength),
+        m_WindSpeedData->MinBladeLength,
+        m_WindSpeedData->MaxBladeLength,
+        "%.2f",
+        ImGuiSliderFlags_None
+    );
+
+    return retVal;
 }

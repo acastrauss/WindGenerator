@@ -49,3 +49,8 @@ float WindEnergyWindow::getWindSpeed() const
 {
     return m_WindSpeedSlider.GetWindSpeed();
 }
+
+float WindEnergyWindow::GetBladePercentageIncrease() const
+{
+    return m_WindSpeedData.GetBladePercentageIncrease();
+}

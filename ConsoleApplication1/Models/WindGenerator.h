@@ -29,7 +29,7 @@ public:
 	void setAngleIncrement(GLfloat increment);
 	GLfloat getRotorLength() const;
 
-
+	void SetBladePercentageInc(float perc);
 
 private:
 	Cone m_ConeBase;
@@ -41,6 +41,7 @@ private:
 	float angleInc = 0.5f;
 	const float maxInc = 1.75f;
 	const float tsr = 7.2f; // tip speed ratio
+	float bladePercentageInc = 1.0f;
 
 	float delta;
 

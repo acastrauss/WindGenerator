@@ -20,10 +20,14 @@ EnergyDisplay::EnergyDisplay(WindSpeedData* wsd):
 
 void EnergyDisplay::Render()
 {
-    float activePower = GetActivePower(m_WindSpeedData->WindSpeed,m_WindSpeedData->bladeLength);
+    float activePower = GetActivePower(m_WindSpeedData->WindSpeed, m_WindSpeedData->BladeLength);
     float reactivePower = activePower * 0.05f;
 
-    ImGui::Text("Active power: %.2f [kW]", activePower);
+    ImGui::Text("Active power: %.2f * %d = %.2f [MW]",
+        activePower / pow(10, 3), m_WindSpeedData->NumOfGenerators,
+        activePower / pow(10, 3) * m_WindSpeedData->NumOfGenerators);
     ImGui::NewLine();
-    ImGui::Text("Reactive power: %.2f [kW]", reactivePower);
+    ImGui::Text("Reactive power: %.2f * %d = %.2f [MW]",
+        reactivePower / pow(10, 3), m_WindSpeedData->NumOfGenerators,
+        reactivePower / pow(10, 3) * m_WindSpeedData->NumOfGenerators);
 }
