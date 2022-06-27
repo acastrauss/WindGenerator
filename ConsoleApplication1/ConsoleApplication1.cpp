@@ -171,8 +171,6 @@ int main() {
         0.1f,
         100.0f);
 
-    //winGenerator.SetProjectionMatrix(projection);
-
     float degs = 0;
 
     GLfloat last_time = 0;
@@ -190,7 +188,8 @@ int main() {
         spm1, {},
         glm::vec3(0.0f, 0.0f, 0.0f),
         7.0f, 0.15f,
-        0.2f, 0.5f, 3.0f
+        0.2f, 0.5f, 3.0f,
+        wew.GetWindSpeedData()
     );
 
     Mesh* terrain = gen->GetTerrainMesh();
@@ -220,7 +219,6 @@ int main() {
 
     Mesh grassMesh(q.GetVertices(), q.GetVerticesNum(), q.GetIndices(), q.GetIndicesNum());
 
-    winGenerator.setRpm(20);
 
     int i = 10;
     auto& uniLoc = spm1.GetUniformLocations();
@@ -397,7 +395,6 @@ int main() {
 
 
 
-
         //winGenerator.SetViewMatrix(view);
         // faktor skaliranja vremena u odnosu na stvarni svet
 
@@ -413,6 +410,8 @@ int main() {
         ImGui::NewFrame();
 
         ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
+        
+        // speed updated
         wew.Render();
 
         ImGui::Render();

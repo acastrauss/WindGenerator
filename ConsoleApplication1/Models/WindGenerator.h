@@ -7,6 +7,11 @@
 #include "Models/Model.h"
 #include "Shader/Shader.h"
 #include <vector>
+#include "UIComponents/WindSpeedData.h"
+
+constexpr static float MinWindSpeedToRotate = 4.0f;
+constexpr static float MaxWindSpeedToRotate = 24.0f;
+
 
 class WindGenerator : public Model {
 public:
@@ -17,15 +22,14 @@ public:
 		GLfloat baseConeRadius,
 		GLfloat propellerD1,
 		GLfloat propellerD2,
-		GLfloat propellerLength
+		GLfloat propellerLength,
+		WindSpeedData* wsdPtr
 	);
 
 	~WindGenerator();
 
 	void Render(glm::vec3 position);
 	void setDelta(float delta);
-	void setRpm(GLfloat rpm);
-	GLfloat getRpm() const;
 	void setAngleIncrement(GLfloat increment);
 	GLfloat getRotorLength() const;
 
@@ -35,6 +39,7 @@ private:
 	Cone m_ConeBase;
 	Square m_PropellerBase;
 	RhombusPyramid m_Propeller;
+	WindSpeedData* m_WSDPtr;
 
 	float startAngle = 0.0f;
 	const float maxAngle = 360.0f;
@@ -45,7 +50,6 @@ private:
 
 	float delta;
 
-	GLfloat rpm;
 	
 	void CreateMeshes();
 

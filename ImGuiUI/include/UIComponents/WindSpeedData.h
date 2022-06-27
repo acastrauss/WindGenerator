@@ -1,8 +1,8 @@
 #pragma once
 
-constexpr static const float defaultWindSpeed = 5.0f;
+constexpr static const float defaultWindSpeed = 10.0f;
 constexpr static const float defaultMinWindSpeed = 0.0f;
-constexpr static const float defaultMaxWindSpeed = 15.0f;
+constexpr static const float defaultMaxWindSpeed = 30.0f;
 constexpr static const float defaultBladeLength = 52.0f;
 constexpr static const float minBladeLength = 52.0f;
 constexpr static const float maxBladeLength = 107.0f;

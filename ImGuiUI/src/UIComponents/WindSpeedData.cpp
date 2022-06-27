@@ -37,3 +37,4 @@ float WindSpeedData::GetBladePercentageIncrease() const
 {
     return BladeLength / defaultBladeLength;
 }
+

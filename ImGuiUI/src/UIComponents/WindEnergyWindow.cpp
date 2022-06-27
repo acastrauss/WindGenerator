@@ -14,7 +14,7 @@ WindEnergyWindow::WindEnergyWindow(
     m_Height(height)
 {}
 
-void WindEnergyWindow::Render()
+bool WindEnergyWindow::Render()
 {
     static bool show = false;
 
@@ -31,10 +31,7 @@ void WindEnergyWindow::Render()
         ImGuiWindowFlags_AlwaysAutoResize
     );
 
-
-    if (m_WindSpeedSlider.Render()) {
-        // speed changed update other components
-    }
+    bool speedChanged = m_WindSpeedSlider.Render();
 
     ImGui::NewLine();
 
@@ -42,6 +39,8 @@ void WindEnergyWindow::Render()
     m_EnergyDisplay.Render();
 
     ImGui::End();
+
+    return speedChanged;
 }
 
 
@@ -53,4 +52,9 @@ float WindEnergyWindow::getWindSpeed() const
 float WindEnergyWindow::GetBladePercentageIncrease() const
 {
     return m_WindSpeedData.GetBladePercentageIncrease();
+}
+
+WindSpeedData* WindEnergyWindow::GetWindSpeedData()
+{
+    return &m_WindSpeedData;
 }
