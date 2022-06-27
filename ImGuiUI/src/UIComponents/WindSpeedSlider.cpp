@@ -13,6 +13,10 @@ float WindSpeedSlider::GetWindSpeed() const
 
 bool WindSpeedSlider::Render()
 {
+    ImGui::Text("Minimum operable speed:4 m/s");
+    ImGui::NewLine();
+    ImGui::Text("Maximum operable speed:24 m/s");
+
     bool speedUpdated = ImGui::SliderFloat(
         "Wind speed [m/s]",
         &(m_WindSpeedData->WindSpeed),

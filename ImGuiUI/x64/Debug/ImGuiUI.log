@@ -2,8 +2,6 @@
   WindEnergyWindow.cpp
 D:\grafika_proj\projekat\WindGenerator\ImGuiUI\src\UIComponents\WindEnergyWindow.cpp(22,25): warning C4244: 'argument': conversion from 'const unsigned int' to 'float', possible loss of data
 D:\grafika_proj\projekat\WindGenerator\ImGuiUI\src\UIComponents\WindEnergyWindow.cpp(22,16): warning C4244: 'argument': conversion from 'const unsigned int' to 'float', possible loss of data
-  WindSpeedData.cpp
-D:\grafika_proj\projekat\WindGenerator\ImGuiUI\src\UIComponents\WindSpeedData.cpp(10,20): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
   WindSpeedSlider.cpp
   Generating Code...
   ImGuiUI.vcxproj -> D:\grafika_proj\projekat\WindGenerator\x64\Debug\ImGuiUI.lib

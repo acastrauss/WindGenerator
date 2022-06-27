@@ -12,7 +12,6 @@
 constexpr static float MinWindSpeedToRotate = 4.0f;
 constexpr static float MaxWindSpeedToRotate = 24.0f;
 
-
 class WindGenerator : public Model {
 public:
 	WindGenerator(
@@ -54,4 +53,14 @@ private:
 	void CreateMeshes();
 
 	GLfloat getPropellerSideArea() const;
+
+	bool rotate = true;
+	const unsigned int framesToStop = 500;
+	/// <summary>
+	/// Frames since rotation should stop
+	/// </summary>
+	unsigned int framesRotationOffCnt = 0;
+	float rotationStoppedAngle = 0.0f;
+	float baseModulate = 10.0f;
+
 };

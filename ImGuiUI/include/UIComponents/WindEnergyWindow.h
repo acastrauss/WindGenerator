@@ -4,7 +4,7 @@
 #include "EnergyDisplay.h"
 
 constexpr static const unsigned int wewWidth = 400;
-constexpr static const unsigned int wewHeight = 200;
+constexpr static const unsigned int wewHeight = 250;
 
 class WindEnergyWindow {
 private:

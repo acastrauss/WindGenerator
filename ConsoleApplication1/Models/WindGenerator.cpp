@@ -83,7 +83,13 @@ void WindGenerator::CreateMeshes()
 
 void WindGenerator::Render(glm::vec3 position)
 {
-	bool rotate = m_WSDPtr->WindSpeed >= MinWindSpeedToRotate && m_WSDPtr->WindSpeed <= MaxWindSpeedToRotate;
+	bool prevRotate = rotate;
+	rotate = m_WSDPtr->WindSpeed >= MinWindSpeedToRotate && m_WSDPtr->WindSpeed <= MaxWindSpeedToRotate;
+
+	if (!rotate && prevRotate) {
+		framesRotationOffCnt = 1;
+		baseModulate = 10.0f;
+	}
 
 	m_ModelMatrix = glm::mat4(1.0f);
 	
@@ -115,7 +121,7 @@ void WindGenerator::Render(glm::vec3 position)
 
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
-		glm::radians(rotate ? startAngle : 0.0f),
+		glm::radians(startAngle),
 		glm::vec3(0, 0, 1)
 	);
 	
@@ -140,7 +146,7 @@ void WindGenerator::Render(glm::vec3 position)
 
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
-		glm::radians(rotate ? (startAngle + 120.0f) : 120.0f),
+		glm::radians(startAngle + 120.0f),
 		glm::vec3(0, 0, 1)
 	);
 
@@ -165,7 +171,7 @@ void WindGenerator::Render(glm::vec3 position)
 	
 	m_ModelMatrix = glm::rotate(
 		m_ModelMatrix,
-		glm::radians(rotate ? (startAngle + 240.0f) : 240.0f),
+		glm::radians(startAngle + 240.0f),
 		glm::vec3(0, 0, 1)
 	);
 
@@ -183,7 +189,16 @@ void WindGenerator::Render(glm::vec3 position)
 
 	m_Meshes[2].RenderMesh();
 
-	if (rotate) {
-		startAngle += angleInc * delta;
+	auto inc = angleInc * delta;
+
+	if (!rotate) {
+		inc *= framesRotationOffCnt < framesToStop ? baseModulate / framesRotationOffCnt : 0.0f;
+		baseModulate += 0.01;
+	}
+
+	startAngle += inc;
+
+	if (!rotate) {
+		framesRotationOffCnt++;
 	}
 }
